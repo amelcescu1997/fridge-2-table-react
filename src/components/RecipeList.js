@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Recipes() {
+export default function RecipeList() {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
@@ -15,12 +15,12 @@ export default function Recipes() {
         fetchRecipes()
     }, [])
 
-    return <div style={{display: "flex"}}>
-        {recipes.map((recipe) => <Recipe {...recipe}/>)}
+    return <div>
+        {recipes.map((recipe) => <SimpleRecipe {...recipe}/>)}
     </div>
 }
 
-function Recipe({title, image, id}) {
+export function SimpleRecipe({title, image, id, hideFavorite}) {
     const handleFavorite = async() => {
         const response = await fetch("/api/favorites/" + id, {
             method: "POST"
@@ -36,6 +36,6 @@ function Recipe({title, image, id}) {
     return <div>
         <h2>{title}</h2>
         <img src = {image} alt = {title}/>
-        <button onClick={handleFavorite}>favorite</button>
+        {!hideFavorite && <button onClick={handleFavorite}>favorite</button>}
     </div>
 }

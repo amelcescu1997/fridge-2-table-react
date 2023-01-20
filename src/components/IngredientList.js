@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Ingredients() {
+export default function IngredientList() {
     const [ingredients, setIngredients] = useState([])
 
     useEffect(() => {
