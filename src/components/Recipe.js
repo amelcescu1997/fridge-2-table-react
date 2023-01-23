@@ -30,7 +30,7 @@ export default function Recipe({ title, image, raw, userSteps = {}, _id, onUpdat
         setEditingInstructions(instructions.map(() => {
             return false
         }))
-    }, [instructions])
+    }, []) //keep the [] empty
 
     const updateEditingInstruction = (instruction, index) => {
         setEditingInstructions((previousEditingInstructions) => {
